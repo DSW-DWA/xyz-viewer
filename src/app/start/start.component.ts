@@ -7,4 +7,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent {
+  handleUpload(e: any):void{
+    console.log(e);
+
+ }
 }

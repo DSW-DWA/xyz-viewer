@@ -4,18 +4,18 @@
   </header>
   <div class="menu">
     <div class="img-wrapper">
-      Импортируйте файл
+      <img src="../../assets/test_img.jpg">
     </div>
     <div class="tool-wrapper">
       <div class="tools">
-        <div class="tool-cluster">
-          <div class="tool-cluster-label">
+        <div class="tool-item">
+          <div class="tool-item-label">
               Глубина кластеризации
           </div>
-          <div class="tool-cluster-input">
-              <button class="tool-cluster-input-minus" (click)="decreaseClusterNum()">-</button>
+          <div class="tool-item-input">
+              <button class="tool-item-input-minus" (click)="decreaseClusterNum()">-</button>
               {{ (clusterNum | async) }}
-              <button class="tool-cluster-input-plus" (click)="increaseClusterNum()">+</button>
+              <button class="tool-item-input-plus" (click)="increaseClusterNum()">+</button>
           </div>
         </div>
       </div>

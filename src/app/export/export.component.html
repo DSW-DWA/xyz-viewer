@@ -1,0 +1,27 @@
+<header class="menubar">
+    <div>Импорт</div>
+    <div>Экспорт</div>
+    <!-- <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div> -->
+  </header>
+  <div class="menu">
+    <div class="img-wrapper">
+      <img src="../../assets/test_img.jpg">
+    </div>
+    <div class="tool-wrapper">
+        <div class="tools">
+            <div class="tool-item">
+                <div class="tool-item-label">
+                    Отображаемые объекты
+                </div>
+                <div class="tool-item-checkboxs-wrapper">
+                    <div *ngFor="let item of objects; let i = index" class="tool-item-checkbox-wrapper">
+                        <input type="checkbox" id="{{item}}" name="{{item}}" class="tool-item-checkbox">
+                        <label for="{{item}}">{{item}}</label>
+                        <span><img src="../../assets/test_img.jpg"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="accept-button">Показать</button>
+    </div>
+  </div>
