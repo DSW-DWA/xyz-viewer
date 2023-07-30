@@ -22,3 +22,5 @@ venv/
 
 # Ignore any sensitive or confidential information (e.g., API keys, passwords)
 secrets.txt
+node_modules
+.angular
