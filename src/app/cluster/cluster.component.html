@@ -1,0 +1,24 @@
+<header class="menubar">
+    <div>Импорт</div>
+    <div>График метода Локтя</div>
+  </header>
+  <div class="menu">
+    <div class="img-wrapper">
+      Импортируйте файл
+    </div>
+    <div class="tool-wrapper">
+      <div class="tools">
+        <div class="tool-cluster">
+          <div class="tool-cluster-label">
+              Глубина кластеризации
+          </div>
+          <div class="tool-cluster-input">
+              <button class="tool-cluster-input-minus" (click)="decreaseClusterNum()">-</button>
+              {{ (clusterNum | async) }}
+              <button class="tool-cluster-input-plus" (click)="increaseClusterNum()">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="accept-button">Применить</button>
+    </div>
+  </div>
