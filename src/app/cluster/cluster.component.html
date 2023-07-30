@@ -1,10 +1,9 @@
 <header class="menubar">
-    <div>Импорт</div>
-    <div>График метода Локтя</div>
+    <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div>
   </header>
   <div class="menu">
     <div class="img-wrapper">
-      <img src="../../assets/test_img.jpg">
+      <img src="../../assets/test_locat.png">
     </div>
     <div class="tool-wrapper">
       <div class="tools">
@@ -19,6 +18,6 @@
           </div>
         </div>
       </div>
-      <button class="accept-button">Применить</button>
+      <button class="accept-button" (click)="handleUse($event)">Применить</button>
     </div>
   </div>

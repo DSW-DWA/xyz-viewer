@@ -1,5 +1,5 @@
 <header class="menubar">
-    <div>Импорт</div>
+    <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div>
     <div>Экспорт</div>
     <!-- <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div> -->
   </header>

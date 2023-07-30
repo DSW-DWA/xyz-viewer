@@ -1,6 +1,11 @@
-# MyApp
+# xyz-viewer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+## Run app
+
+Run `npm i `.
+Run `npm run electron` 
+
 
 ## Development server
 

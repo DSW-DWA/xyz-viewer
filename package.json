@@ -1,12 +1,14 @@
 {
-  "name": "my-app",
+  "name": "xyz-viewer",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "electron": "ng build && electron ."
   },
   "private": true,
   "dependencies": {
@@ -19,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.1",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -27,6 +29,7 @@
     "@angular/cli": "~16.1.3",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
+    "electron": "^25.3.2",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
