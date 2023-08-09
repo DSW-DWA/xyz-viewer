@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Component} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FileService } from '../file.service';
+
 
 @Component({
   selector: 'app-start',
@@ -7,12 +9,11 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent {
+
   constructor (
-    private route: ActivatedRoute,
-    private router: Router ) 
+    private fileService: FileService ) 
   {}
   handleUpload(e: any):void{
-    console.log(e);
-    this.router.navigate(['/cluster'], { relativeTo: this.route });
- }
+    this.fileService.uploadFile(e);
+  }
 }

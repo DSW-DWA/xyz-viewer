@@ -1,11 +1,10 @@
 <header class="menubar">
     <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div>
-    <div>Экспорт</div>
-    <!-- <div (click)="fileInput.click()"><input #fileInput type="file" hidden (change)="handleUpload($event)" accept=".xyz">Импорт</div> -->
+    <div (click)="handleExport()">Экспорт</div>
   </header>
   <div class="menu">
     <div class="img-wrapper">
-      <img src="../../assets/test_img.jpg">
+      <img src="{{(fileService.mainImagePath | async)}}">
     </div>
     <div class="tool-wrapper">
         <div class="tools">
@@ -14,14 +13,14 @@
                     Отображаемые объекты
                 </div>
                 <div class="tool-item-checkboxs-wrapper">
-                    <div *ngFor="let item of objects; let i = index" class="tool-item-checkbox-wrapper">
-                        <input type="checkbox" id="{{item}}" name="{{item}}" class="tool-item-checkbox">
-                        <label for="{{item}}">{{item}}</label>
-                        <span><img src="../../assets/test_img.jpg"></span>
+                    <div *ngFor="let item of fileService.clusters; let i = index" class="tool-item-checkbox-wrapper">
+                        <input type="checkbox" id="{{item.index}}" name="{{item.index}}" class="tool-item-checkbox" checked>
+                        <label for="{{item.index}}" (click)="toggleClusterNum(i)">Object{{item.index}}</label>
+                        <span><img src="{{'http://127.0.0.1:8000' + item.path}}"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="accept-button">Показать</button>
+        <button class="accept-button" (click)="handleShow($event)">Показать</button>
     </div>
   </div>

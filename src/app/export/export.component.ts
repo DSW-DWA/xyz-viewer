@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FileService } from '../file.service';
 
 @Component({
   selector: 'app-export',
@@ -8,12 +8,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ExportComponent {
   constructor (
-    private route: ActivatedRoute,
-    private router: Router ) 
+    public fileService: FileService ) 
   {}
-  objects = ['Object 1', 'Object 2', 'Object 3','Object 4', 'Object 5', 'Object 6','Object 7', 'Object 8', 'Object 9'];
+  objects: number[] = [];
+  toggleClusterNum(i: number){
+    if (this.objects.includes(i)){
+      this.objects.splice(this.objects.indexOf(i), 1);
+    } else {
+      this.objects.push(i);
+    }
+  }
   handleUpload(e: Event):void{
-    console.log(e);
-    this.router.navigate(['/cluster'], { relativeTo: this.route });
+    this.fileService.uploadFile(e);
+  }
+
+  handleShow(e: Event):void{
+    this.fileService.showImage(this.objects);
+  }
+  handleExport() {
+    this.fileService.downloadFile(this.fileService.filePath.value);
   }
 }

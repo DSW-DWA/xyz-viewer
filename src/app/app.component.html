@@ -1,1 +1,2 @@
 <router-outlet></router-outlet>
+<div class="loadscreen" [ngClass]="{disabled: !(fileService.loadScreen | async)}">{{(fileService.loadScreenMessage | async)}}</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { FileService } from './file.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AppComponent {
   title = 'my-app';
-  handleUpload(e: any):void{
-    console.log(e.target);
- }
+  constructor(
+    public fileService: FileService
+  ) {}
 }

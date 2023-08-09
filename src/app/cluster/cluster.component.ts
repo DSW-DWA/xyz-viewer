@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { FileService } from '../file.service';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ClusterComponent {
   clusterNum = new BehaviorSubject(1);
+
   constructor (
     private route: ActivatedRoute,
-    private router: Router ) 
+    private router: Router,
+    public fileService: FileService ) 
   {}
   increaseClusterNum() {
     this.clusterNum.next(this.clusterNum.value + 1 > 12 ? 12 : this.clusterNum.value + 1);
@@ -21,11 +24,9 @@ export class ClusterComponent {
     this.clusterNum.next(this.clusterNum.value - 1 < 1 ? 1 : this.clusterNum.value - 1);
   }
   handleUpload(e: Event):void{
-    console.log(e);
-    this.router.navigate(['/cluster'], { relativeTo: this.route });
+    this.fileService.uploadFile(e);
   }
   handleUse(e: Event):void{
-    // do something
-    this.router.navigate(['/export'], { relativeTo: this.route });
+    this.fileService.generateImage(this.clusterNum.value);
   }
 }
