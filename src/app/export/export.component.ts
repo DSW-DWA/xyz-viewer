@@ -10,7 +10,7 @@ export class ExportComponent {
   constructor (
     public fileService: FileService ) 
   {}
-  objects: number[] = [];
+  objects: number[] = Array.from(Array(this.fileService.clusters.length).keys());
   toggleClusterNum(i: number){
     if (this.objects.includes(i)){
       this.objects.splice(this.objects.indexOf(i), 1);
