@@ -26,6 +26,6 @@ export class ExportComponent {
     this.fileService.showImage(this.objects);
   }
   handleExport() {
-    this.fileService.downloadFile(this.fileService.filePath.value);
+    this.fileService.exportFile(this.objects);
   }
 }

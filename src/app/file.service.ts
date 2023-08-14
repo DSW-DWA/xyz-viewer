@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { saveAs } from 'file-saver';
 
 export interface ClusterImage {
   index: number,
@@ -120,8 +121,8 @@ export class FileService {
       success => {
         this.mainImagePath.next(environment.url + success.main_image);
         this.clusters = success.cluster_images;
-        this.exportFile(Array.from(Array(this.clusters.length).keys()));
         this.router.navigate(['/export'], { relativeTo: this.route });
+        this.loadScreen.next(false);
       }
     ).catch(
       error => {
@@ -157,7 +158,7 @@ export class FileService {
     ).then(
       success => {
         this.mainImagePath.next(environment.url + success.image_path);
-        this.exportFile(objects);
+        this.loadScreen.next(false);
       }
     ).catch(
       error => {
@@ -191,7 +192,8 @@ export class FileService {
     ).then(
       success => {
         this.loadScreen.next(false);
-        this.filePath.next(environment.url + success.filepath);
+        saveAs(environment.url + success.filepath, "file.xyz");
+        console.log(success);
       }
     ).catch(
       error => {
@@ -199,32 +201,5 @@ export class FileService {
         console.log(error)
       }
     );
-  }
-
-  public downloadFile(url: string) {
-    if (this.sessionId == undefined || this.optimalCluster == undefined) {
-      return;
-    }
-
-    fetch(url).then(
-      response => response.blob()
-    ).then(
-      success => {
-        const blobUrl = URL.createObjectURL(success);
-        const link = document.createElement("a");
-        link.href = blobUrl;
-        link.download;
-        link.style.display = "none";
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl); 
-      }
-    ).catch(
-      error => console.log(error)
-    )
   }
 }
